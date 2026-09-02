@@ -1,0 +1,13 @@
+# On a GPU machine install the CUDA-bundled build, otherwise TensorFlow
+# silently falls back to CPU:
+#
+#     pip install "tensorflow[and-cuda]>=2.16"
+#
+# Part 1 of the notebook prints whether a GPU was actually found.
+#
+tensorflow>=2.16
+numpy>=1.26
+scikit-learn>=1.4
+matplotlib>=3.8
+scikit-image>=0.22     # CLAHE preprocessing ablation only
+ipywidgets>=8.1        # interactive demo only
