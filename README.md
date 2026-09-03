@@ -40,8 +40,20 @@ runs before committing hours to it. Its outputs go to `results_quick/` rather
 than `results/`, so a smoke run can never be mistaken for a finished
 experiment.
 
-Set `QUICK_MODE = False` for the real grid — roughly **3 hours on an H200**, or
-2 hours if you drop the 224px run (`RESOLUTIONS = [64, 128]`).
+Set `QUICK_MODE = False` for the real grid. Measured on an H200 at 64px:
+**~5 s/epoch**, so 18 cells (15 trained models) is roughly **1 hour**, plus the
+128px and 224px runs.
+
+The notebook **refuses to start** the full grid without a GPU. A missing CUDA
+build is otherwise silent — TensorFlow just falls back and the same grid takes
+well over a day, with early stopping cutting runs short so the numbers are
+undertrained as well as slow. Override with `ALLOW_CPU = True` only if you mean
+it.
+
+Only the resolutions the grid needs get downloaded. With axis C disabled
+(`AXES = "ABD"`) that is 400 MB instead of 5.7 GB — on a throttled connection
+the 3.9 GB 224px archive can take longer to fetch than the whole run takes to
+train.
 
 The grid cell is **resumable**: completed runs are detected on disk and
 skipped, so re-running after an interruption continues rather than restarts.
