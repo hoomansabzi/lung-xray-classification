@@ -1,0 +1,41 @@
+# Dataset archives: ~5.7 GB, re-downloaded automatically by the notebook.
+data/
+*.npz
+
+# Trained models: one per run, 15-45 MB each.
+checkpoints/
+checkpoints_quick/
+*.keras
+*.h5
+
+# Per-run outputs. Regenerated on the server; worth committing back selectively
+# once the real grid has run.
+results/
+figures/
+report/
+
+# QUICK_MODE outputs: plumbing-test numbers, never real results.
+results_quick/
+figures_quick/
+report_quick/
+
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Logs
+*.log
+nohup.out
+
+# Local analysis of the first (CPU-crippled) server run. Kept on disk for
+# reference; the executed notebook alone is 25 MB of embedded figures.
+Result/
